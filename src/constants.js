@@ -1,9 +1,14 @@
 export const scaleFactor = 4;
 
 export const dialogueData = {
-  pc: ` Anyway regardless of the language, I just like programming.
+  pc: `Hello! I'm Lydia Bandy, a software engineer and music composer
+  <br> I am a full stack developer with experience in JavaScript, React, Node.js, Express, MongoDB, and more!
+  <img src="./JohnnyChatExample.png" width="200px"
+   height="160px" align="middle" alt="JohnnyChatBot" class="center" </img>
     Here is my <a href="https://github.com/LydiasPianoStudio" target="_blank">Github</a>!`,
   "cs-degree": `I attended McDaniel College receiving a B.A. in Music.
+  <br> <img src="./McDanielCollege.jpg" width="200px"
+   height="160px" align="middle" alt="McDaniel_College_Degree" class="center" </img>
    Did you know coding and music are similar languages?🎹💻`,
   "sofa-table": `I like to relax on my couch and upload harp and piano videos on my youTube channel for the world to see🎹. 
   Subscribe to <a href="https://youtube.com/@lydiaspianostudio" target="_blank">@Lydiaspianostudio</a>!!
