@@ -1,10 +1,8 @@
 # Developer portfolio that's a 2D game
 
-
-This project is my portfolio in a 2D game format. 
+This project is my portfolio in a 2D game format.
 It was built with the Kaboom.js library using JavaScript, vite, node.js.
-The text is rendered with HTML/CSS (not canvas). 
-
+The text is rendered with HTML/CSS (not canvas).
 
 ![A screenshot of the project](./developerportfoliothumbnail.png)
 
@@ -30,10 +28,9 @@ Note: You need `Node.js` and `npm` installed on your machine.
 
 # How to host?
 
-Once the project is built. Take the content of the dist folder and drag and drop it
-to your favorite static site hosting provider.
+Here is a [guide](HOW_TO_DEPLOY.MD).
 
 #Contact
 
-Feel free to contact me at https://lydiaspianostudio.com/contact/ for job inquiries 
-LinkedIn: 
+Feel free to contact me at https://lydiaspianostudio.com/contact/ for job inquiries
+LinkedIn:
