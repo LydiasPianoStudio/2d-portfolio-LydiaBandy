@@ -28,6 +28,7 @@ export const dialogueData = {
       <li>
         🧠 <strong>Johnny5</strong> — a MERN stack ChatGPT-style clone.
       </li>
+          <img src="./JohnnyChatExample.png" width="200" height="160" alt="Johnny Chat Bot" style="margin: 10px 0; border-radius: 8px;" />
       <li>
         🎮 <a href="https://github.com/LydiasPianoStudio/react-trivia" target="_blank"><strong>React Trivia Game</strong></a> — built with React, TypeScript, JavaScript, and Bootstrap.
       </li>
@@ -38,7 +39,7 @@ export const dialogueData = {
       </li>
     </ul>
 
-    <img src="./JohnnyChatExample.png" width="200" height="160" alt="Johnny Chat Bot" style="margin: 10px 0; border-radius: 8px;" />
+
 
     <p>
       💻 See more on my 
