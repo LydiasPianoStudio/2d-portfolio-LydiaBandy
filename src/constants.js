@@ -19,28 +19,10 @@ export const dialogueData = {
       <strong>React, TypeScript, and Node.js</strong> in real-world projects. I also gained experience with 
       <strong>GitHub collaboration, version control,</strong> and <strong>unit testing</strong> to ensure production-ready code.
     </p>
-
     <p>
-      My portfolio includes:
+      I’m passionate about <strong>music and technology</strong>, and I love how they intersect. I’m excited to apply my 
+      skills in a software engineering role, where I can contribute to innovative projects and continue learning.
     </p>
-
-    <ul style="list-style: none; padding-left: 0;">
-      <li>
-        🧠 <strong>Johnny5</strong> — a MERN stack ChatGPT-style clone.
-      </li>
-          <img src="./JohnnyChatExample.png" width="200" height="160" alt="Johnny Chat Bot" style="margin: 10px 0; border-radius: 8px;" />
-      <li>
-        🎮 <a href="https://github.com/LydiasPianoStudio/react-trivia" target="_blank"><strong>React Trivia Game</strong></a> — built with React, TypeScript, JavaScript, and Bootstrap.
-      </li>
-      <li>
-        🎼 <a href="https://github.com/LydiasPianoStudio/-joy-of-coding--internship-solo-project-" target="_blank">
-          <strong>Practice Log App</strong>
-        </a> — for my piano students, using <em>Next.js, React, Tailwind, Radix UI, Prisma, MySQL, and Axios</em>.
-      </li>
-    </ul>
-
-
-
     <p>
       💻 See more on my 
       <a href="https://github.com/LydiasPianoStudio" target="_blank">GitHub</a> or connect on 
@@ -98,8 +80,7 @@ export const dialogueData = {
     <p>📺 What’s your favorite comedy show?</p>
     <p>I love kicking back and watching <strong>The Office</strong> — it never gets old!</p>
     <p>So naturally, I made a <em>Hangman Game</em> based on it 😄</p>
-    <p>
-      👉 Play it here: 
+    <p>I made it using basic HTML, CSS, and JavaScript — check it out👉:</p>
       <a href="https://lydiaspianostudio.github.io/Hangman-Game/" target="_blank">
         The Office Hangman Game
       </a>
@@ -124,9 +105,46 @@ export const dialogueData = {
 
   resume: `Would you like to see my resume? <a href="https://github.com/LydiasPianoStudio/Resume/blob/main/Lydia%20Bandy%20Resume%20Github.pdf" target="_blank">LydiasPianoStudio_Resume</a>
   Contact me at LydiaBandy@gmail.com or connect with me at my <a href="https://linkedin.com/in/lydia-bandy-2b160745/" target="_blank">LinkedIn</a>!`,
-  projects: `Info about this portfolio : It's made with the Kaboom.js library which is a library for making games in JavaScript.
-  Text is rendered with HTML/CSS. So the textbox you're currently reading is not rendered within canvas..`,
-  library: `.`,
+  projects: `
+  <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+    <p>💻 My portfolio includes:</p>
+
+    <ul style="list-style: none; padding-left: 0;">
+      <li>
+        🧠 <strong>Johnny5</strong> — a MERN stack ChatGPT-style clone.
+      </li>
+      <img src="./JohnnyChatExample.png" width="200" height="160" alt="Johnny Chat Bot" style="margin: 10px 0; border-radius: 8px;" />
+      
+      <li>
+        🎮 <a href="https://github.com/LydiasPianoStudio/react-trivia" target="_blank"><strong>React Trivia Game</strong></a> — built with React, TypeScript, JavaScript, and Bootstrap.
+      </li>
+      
+      <li>
+        🎼 <a href="https://github.com/LydiasPianoStudio/-joy-of-coding--internship-solo-project-" target="_blank">
+          <strong>Practice Log App</strong>
+        </a> — for my piano students, using <em>Next.js, React, Tailwind, Radix UI, Prisma, MySQL, and Axios</em>.
+      </li>
+    </ul>
+  </div>
+`,
+
+  library: `  <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+  <p>
+    🧑‍💻 I’m a Junior Developer at <strong>TechJoy Software</strong> where I help bring ideas to life for small businesses.
+  </p>
+    <p>
+    Our projects is <a href="https://supportlocalusa.com/" target="_blank"><strong>SupportLocalUSA.com</strong></a> — a platform that empowers local communities by promoting their businesses online. 💼🌟
+  </p>
+  <p>
+    I’ve led Agile sprints, facilitated standups, and helped reduce development cycles by 15%, all while increasing user engagement by 20%.
+  </p>
+  <p>
+    I manage projects using tools like GitHub (tickets + PR reviews), and collaborate remotely using Discord and Zoom.
+  </p>
+  <p>
+    It's been a great experience blending collaboration, problem-solving, and code to make a real difference. 💡
+  </p>
+`,
   exit: `Thanks for stopping by and visiting me! 
    <a href="https://lydiaspianostudio.com/" target="_blank">LydiasPianoStudio</a>
    , just close the tab and stop by anytime!.`,
