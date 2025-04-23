@@ -27,7 +27,8 @@ export const dialogueData = {
       💻 See more on my 
       <a href="https://github.com/LydiasPianoStudio" target="_blank">GitHub</a> or connect on 
       <a href="https://linkedin.com/in/lydia-bandy-2b160745/" target="_blank">LinkedIn</a>!
-    </p>
+    <p> Here is my resume: <a href="https://github.com/LydiasPianoStudio/Resume/blob/main/Lydia%20Bandy%20Resume%20Github.pdf" target="_blank">Lydia Bandy Software Engineer</a>
+  </p>
   </div>
 `,
   "cs-degree": `
@@ -103,27 +104,30 @@ export const dialogueData = {
   </div>
 `,
 
-  resume: `Would you like to see my resume? <a href="https://github.com/LydiasPianoStudio/Resume/blob/main/Lydia%20Bandy%20Resume%20Github.pdf" target="_blank">LydiasPianoStudio_Resume</a>
-  Contact me at LydiaBandy@gmail.com or connect with me at my <a href="https://linkedin.com/in/lydia-bandy-2b160745/" target="_blank">LinkedIn</a>!`,
+  resume: `<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+  <p>Freelance Web Developer <a href="https://albertbandy.com/" target="_blank">Al's Woodcraft Creation</a>
+      <img src="./AlsWoodcraft.png" width="200" height="160" alt="Al's Woodcraft Creation" style="margin: 10px 0; border-radius: 8px;" />
+  </p>`,
   projects: `
   <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>💻 My portfolio includes:</p>
 
     <ul style="list-style: none; padding-left: 0;">
       <li>
-        🧠 <strong>Johnny5</strong> — a MERN stack ChatGPT-style clone.
+        🧠 <a href="https://github.com/LydiasPianoStudio/MERN-AI-ChatBot-App" target="_blank"><strong>Johnny5</strong></a> — a MERN stack ChatGPT-style clone. 
       </li>
       <img src="./JohnnyChatExample.png" width="200" height="160" alt="Johnny Chat Bot" style="margin: 10px 0; border-radius: 8px;" />
       
       <li>
         🎮 <a href="https://github.com/LydiasPianoStudio/react-trivia" target="_blank"><strong>React Trivia Game</strong></a> — built with React, TypeScript, JavaScript, and Bootstrap.
       </li>
-      
+      <img src="./MusicHistoryQuiz2.png" width="200" height="160" alt="Music Quiz" style="margin: 10px 0; border-radius: 8px;" />
       <li>
         🎼 <a href="https://github.com/LydiasPianoStudio/-joy-of-coding--internship-solo-project-" target="_blank">
           <strong>Practice Log App</strong>
         </a> — for my piano students, using <em>Next.js, React, Tailwind, Radix UI, Prisma, MySQL, and Axios</em>.
       </li>
+      <img src="./PracticeLogPage.png" width="200" height="160" alt="Practice Log Page" style="margin: 10px 0; border-radius: 8px;" />
     </ul>
   </div>
 `,
