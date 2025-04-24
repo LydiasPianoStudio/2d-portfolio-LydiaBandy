@@ -78,17 +78,18 @@ export const dialogueData = {
 `,
 
   tv: `
- <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
-    <p>📺 What’s your favorite comedy show?</p>
-    <p>I love kicking back and watching <strong>The Office</strong> — it never gets old!</p>
-    <p>So naturally, I made a <em>Hangman Game</em> based on it 😄</p>
-    <p>I made it using basic HTML, CSS, and JavaScript — check it out👉:</p>
-      <a href="https://lydiaspianostudio.github.io/Hangman-Game/" target="_blank">
-        The Office Hangman Game
-      </a>
-    </p>
-    <img src="./Hangman_Office_Edition.png" width="200px" height="160px" alt="The Office Hangman Game" style="margin-top: 10px; border-radius: 8px;" />
-  </div>
+<div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 100%; overflow-x: hidden;">
+  <p>📺 What’s your favorite comedy show?</p>
+  <p>I love kicking back and watching <strong>The Office</strong> — it never gets old!</p>
+  <p>So naturally, I made a <em>Hangman Game</em> based on it 😄</p>
+  <p>I made it using basic HTML, CSS, and JavaScript — check it out 👉:</p>
+  <p>
+    <a href="https://lydiaspianostudio.github.io/Hangman-Game/" target="_blank">
+      The Office Hangman Game
+    </a>
+  </p>
+  <img src="./Hangman_Office_Edition.png" style="width: 100%; max-width: 300px; height: auto; margin-top: 10px; border-radius: 8px;" alt="The Office Hangman Game" />
+</div>
 `,
 
   bed: `
@@ -112,8 +113,8 @@ export const dialogueData = {
     <a href="https://albertbandy.com/" target="_blank">Al's Woodcraft Creation</a>, an Etsy-based woodworking business.
     By implementing smart SEO tactics and marketing strategies, I helped boost his sales by <strong>80%</strong>!
   </p>
-  <img src="./AlsWoodcraft.png" width="200" height="160" alt="Al's Woodcraft Creation" style="margin: 10px 0; border-radius: 8px;" />
-  <p>
+  <img src="./AlsWoodcraft.png" width="300" height="240" alt="Al's Woodcraft Creation" style="margin: 20px auto; display: block; border-radius: 8px;" />
+  <p> 
     Need a website for your small business or personal brand? I'm available for freelance work! 
     <br>Whether it's a landing page, portfolio, or custom site — I’d love to help bring your vision to life.
     <br>  
@@ -130,18 +131,18 @@ export const dialogueData = {
       <li>
         🧠 <a href="https://github.com/LydiasPianoStudio/MERN-AI-ChatBot-App" target="_blank"><strong>Johnny5</strong></a> — a MERN stack ChatGPT-style clone. 
       </li>
-      <img src="./JohnnyChatExample.png" width="200" height="160" alt="Johnny Chat Bot" style="margin: 10px 0; border-radius: 8px;" />
+      <img src="./JohnnyChatExample.png" width="400" style="height: auto; margin: 20px auto; display: block; border-radius: 8px;" alt="Johnny Chat Bot" />
       
       <li>
         🎮 <a href="https://github.com/LydiasPianoStudio/react-trivia" target="_blank"><strong>React Trivia Game</strong></a> — built with React, TypeScript, JavaScript, and Bootstrap.
       </li>
-      <img src="./MusicHistoryQuiz2.png" width="200" height="160" alt="Music Quiz" style="margin: 10px 0; border-radius: 8px;" />
+      <img src="./MusicHistoryQuiz2.png" width="300" height="240" alt="Music Quiz" style="margin: 20px auto; display: block; border-radius: 8px;" />
       <li>
         🎼 <a href="https://github.com/LydiasPianoStudio/-joy-of-coding--internship-solo-project-" target="_blank">
           <strong>Practice Log App</strong>
         </a> — for my piano students, using <em>Next.js, React, Tailwind, Radix UI, Prisma, MySQL, and Axios</em>.
       </li>
-      <img src="./PracticeLogPage.png" width="200" height="160" alt="Practice Log Page" style="margin: 10px 0; border-radius: 8px;" />
+      <img src="./PracticeLogPage.png" width="300" height="240" alt="Practice Log Page" style="margin: 20px auto; display: block; border-radius: 8px;" />
     </ul>
   </div>
 `,
@@ -153,7 +154,7 @@ export const dialogueData = {
     <p>
     Our current project is <a href="https://supportlocalusa.com/" target="_blank"><strong>SupportLocalUSA.com</strong></a> — a platform that empowers local communities by promoting their businesses online. 💼🌟
   </p>
-  <img src="./SupportLocal.png" alt="Support Local USA Project" width="200" height="160" style="border-radius: 8px; margin: 10px 0;" />
+  <img src="./SupportLocal.png" alt="Support Local USA Project" width="300" height="240" style="border-radius: 8px; margin: 20px auto; display: block;" />
   <p>
     By leveraging Agile (Scrum) methodologies to drive efficiency and participating in stand-ups, sprint planning, and backlog prioritization, I helped reduce development cycle times by 15% and increase user engagement by 20%.. 🚀
   </p>
@@ -177,8 +178,7 @@ export const dialogueData = {
   exit: `<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
   Thanks for stopping by and visiting me at my virtual home!  
   <img src="./LydiaBandy.jpg" alt="Lydia Bandy" width="160" height="160" style="border-radius: 50%; margin: 10px 0;" />
-
   <br>Feel free to check out my website at
    <a href="https://lydiaspianostudio.com/" target="_blank">LydiasPianoStudio</a>,
-    just close the tab and stop by anytime!.`,
+    just close the tab and stop by anytime!`,
 };
