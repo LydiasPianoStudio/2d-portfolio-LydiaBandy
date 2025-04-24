@@ -2,37 +2,38 @@ export const scaleFactor = 4;
 
 export const dialogueData = {
   pc: `
-  <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 700px; margin: auto;">
+   <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>
-      👋 Hi, I’m <strong>Lydia Bandy</strong> — software engineer, music composer, and tech educator.
+      👋 Hi, I’m <strong>Lydia Bandy</strong> — software engineer, music composer, and music educator.
     </p>
-    
+   
     <p>
-      I graduated from <strong>Joy of Coding Academy</strong> (May–Dec 2024) with a strong foundation in 
-      <strong>computer science fundamentals</strong> and <strong>data structures in Python</strong>.
-      During my internship, I mastered algorithms, built full-stack apps, and solved technical challenges on platforms like 
+      I graduated from <strong>Joy of Coding Academy</strong> (May–Dec 2024) with a strong foundation in
+      <strong>computer science fundamentals</strong> and <strong>data structures</strong>.
+      During my internship, I mastered algorithms, built full-stack apps, and solved technical challenges on platforms like
       <em>HackerRank</em>.
     </p>
 
     <p>
-      The program emphasized both theoretical and hands-on learning — from writing clean, testable code to using 
-      <strong>React, TypeScript, and Node.js</strong> in real-world projects. I also gained experience with 
+      The program emphasized both theoretical and hands-on learning — from writing clean, testable code to using
+      <strong>Python, React, TypeScript, Next.js and Node.js</strong> in real-world projects. I also gained experience with
       <strong>GitHub collaboration, version control,</strong> and <strong>unit testing</strong> to ensure production-ready code.
     </p>
     <p>
-      I’m passionate about <strong>music and technology</strong>, and I love how they intersect. I’m excited to apply my 
+      I’m passionate about <strong>music and technology</strong>, and I love how they intersect. I’m excited to apply my
       skills in a software engineering role, where I can contribute to innovative projects and continue learning.
     </p>
     <p>
-      💻 See more on my 
-      <a href="https://github.com/LydiasPianoStudio" target="_blank">GitHub</a> or connect on 
+      💻 See more on my
+      <a href="https://github.com/LydiasPianoStudio" target="_blank">GitHub</a> or connect on
       <a href="https://linkedin.com/in/lydia-bandy-2b160745/" target="_blank">LinkedIn</a>!
     <p> Here is my resume: <a href="https://github.com/LydiasPianoStudio/Resume/blob/main/Lydia%20Bandy%20Resume%20Github.pdf" target="_blank">Lydia Bandy Software Engineer</a>
   </p>
   </div>
 `,
+
   "cs-degree": `
-  <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 600px; margin: auto;">
+ <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>
       I attended <strong>McDaniel College</strong>, receiving a B.A. in Music.
     </p>
@@ -77,7 +78,7 @@ export const dialogueData = {
 `,
 
   tv: `
-  <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+ <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>📺 What’s your favorite comedy show?</p>
     <p>I love kicking back and watching <strong>The Office</strong> — it never gets old!</p>
     <p>So naturally, I made a <em>Hangman Game</em> based on it 😄</p>
@@ -105,9 +106,22 @@ export const dialogueData = {
 `,
 
   resume: `<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
-  <p>Freelance Web Developer <a href="https://albertbandy.com/" target="_blank">Al's Woodcraft Creation</a>
-      <img src="./AlsWoodcraft.png" width="200" height="160" alt="Al's Woodcraft Creation" style="margin: 10px 0; border-radius: 8px;" />
-  </p>`,
+  <p><strong>Freelance Web Developer</strong></p>
+  <p>
+    I created this simple but effective landing page for 
+    <a href="https://albertbandy.com/" target="_blank">Al's Woodcraft Creation</a>, an Etsy-based woodworking business.
+    By implementing smart SEO tactics and marketing strategies, I helped boost his sales by <strong>80%</strong>!
+  </p>
+  <img src="./AlsWoodcraft.png" width="200" height="160" alt="Al's Woodcraft Creation" style="margin: 10px 0; border-radius: 8px;" />
+  <p>
+    Need a website for your small business or personal brand? I'm available for freelance work! 
+    <br>Whether it's a landing page, portfolio, or custom site — I’d love to help bring your vision to life.
+    <br>  
+      👉 <a href="https://lydiaspianostudio.com/contact/" target="_blank">Contact Me</a>
+    </p>
+  </p>
+</div>
+`,
   projects: `
   <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>💻 My portfolio includes:</p>
@@ -134,22 +148,37 @@ export const dialogueData = {
 
   library: `  <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
   <p>
-    🧑‍💻 I’m a Junior Developer at <strong>TechJoy Software</strong> where I help bring ideas to life for small businesses.
+    🧑‍💻 I’m a Junior Developer at <strong>TechJoy Software</strong> where I help bring ideas to life.
   </p>
     <p>
-    Our projects is <a href="https://supportlocalusa.com/" target="_blank"><strong>SupportLocalUSA.com</strong></a> — a platform that empowers local communities by promoting their businesses online. 💼🌟
+    Our current project is <a href="https://supportlocalusa.com/" target="_blank"><strong>SupportLocalUSA.com</strong></a> — a platform that empowers local communities by promoting their businesses online. 💼🌟
+  </p>
+  <img src="./SupportLocal.png" alt="Support Local USA Project" width="200" height="160" style="border-radius: 8px; margin: 10px 0;" />
+  <p>
+    By leveraging Agile (Scrum) methodologies to drive efficiency and participating in stand-ups, sprint planning, and backlog prioritization, I helped reduce development cycle times by 15% and increase user engagement by 20%.. 🚀
   </p>
   <p>
-    I’ve led Agile sprints, facilitated standups, and helped reduce development cycles by 15%, all while increasing user engagement by 20%.
+    Highlights:
+    <ul>
+      <li>✅ Reduced unit test failure rates by 35% by fixing critical 500 errors</li>
+      <li>✅ Boosted ad revenue by 30% with optimized API routes for banners</li>
+      <li>✅ Improved GitHub workflows, cutting Scrum delays by 40%</li>
+      <li>✅ Mentored interns, increasing team productivity by 50%</li>
+      <li>✅ Reached 90% code reliability with Vitest testing</li>
+    </ul>
   </p>
-  <p>
-    I manage projects using tools like GitHub (tickets + PR reviews), and collaborate remotely using Discord and Zoom.
-  </p>
-  <p>
-    It's been a great experience blending collaboration, problem-solving, and code to make a real difference. 💡
-  </p>
+<p>
+  🚀 I'm currently looking for my next opportunity as a Software Developer! 
+  <br>Let’s connect and chat on 
+  <a href="https://linkedin.com/in/lydia-bandy-2b160745/" target="_blank">LinkedIn</a>.
+</p>
 `,
-  exit: `Thanks for stopping by and visiting me! 
-   <a href="https://lydiaspianostudio.com/" target="_blank">LydiasPianoStudio</a>
-   , just close the tab and stop by anytime!.`,
+
+  exit: `<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+  Thanks for stopping by and visiting me at my virtual home!  
+  <img src="./LydiaBandy.jpg" alt="Lydia Bandy" width="160" height="160" style="border-radius: 50%; margin: 10px 0;" />
+
+  <br>Feel free to check out my website at
+   <a href="https://lydiaspianostudio.com/" target="_blank">LydiasPianoStudio</a>,
+    just close the tab and stop by anytime!.`,
 };
