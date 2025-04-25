@@ -106,7 +106,7 @@ export const dialogueData = {
   </div>
 `,
 
-  resume: `<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+  resume: `<div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
   <p><strong>Freelance Web Developer</strong></p>
   <p>
     I created this simple but effective landing page for 
