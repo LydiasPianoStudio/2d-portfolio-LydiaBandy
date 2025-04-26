@@ -2,7 +2,7 @@
 
 This project is my portfolio in a 2D game format.
 It was built with the Kaboom.js library using JavaScript, vite, node.js.
-The text is rendered with HTML/CSS (not canvas).
+The text is rendered with HTML/CSS (not canvas). gitlab page, vitegit
 
 ![A screenshot of the project](public/LydiasPianoStudio.png)
 
