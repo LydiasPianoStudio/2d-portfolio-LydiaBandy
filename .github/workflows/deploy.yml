@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master # or 'master' if that's your default
+      - main
 
 permissions:
   contents: read
@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-artifact
-          path: dist # Change if your build folder is different
+          path: dist # Ensure this matches your build output directory
 
   deploy:
     needs: build
@@ -43,7 +43,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: build-artifact
+          name: build-artifact # Ensure this matches the uploaded artifact name
 
       - name: Deploy to GitHub Pages
         id: deployment
