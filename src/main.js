@@ -2,7 +2,8 @@ import { dialogueData, scaleFactor } from "./constants";
 import { k } from "./kaboomCtx";
 import { displayDialogue, setCamScale } from "./utils";
 
-k.loadSprite("spritesheet", "./spritesheet.png", {
+// ✅ Assets from public folder must start with `/`
+k.loadSprite("spritesheet", "/spritesheet.png", {
   sliceX: 39,
   sliceY: 31,
   anims: {
@@ -15,12 +16,12 @@ k.loadSprite("spritesheet", "./spritesheet.png", {
   },
 });
 
-k.loadSprite("map", "./map.png"); 
-
-k.setBackground(k.Color.fromHex("#0013de")); 
+k.loadSprite("map", "/map.png");
+k.loadFont("monogram", "/monogram.ttf");
+k.setBackground(k.Color.fromHex("#0013de"));
 
 k.scene("main", async () => {
-  const mapData = await (await fetch("./map.json")).json(); 
+  const mapData = await (await fetch("/map.json")).json();
   const layers = mapData.layers;
 
   const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
@@ -64,7 +65,6 @@ k.scene("main", async () => {
           });
         }
       }
-
       continue;
     }
 
@@ -147,16 +147,13 @@ k.scene("main", async () => {
       player.play("idle-up");
       return;
     }
-
     player.play("idle-side");
   }
 
   k.onMouseRelease(stopAnims);
+  k.onKeyRelease(stopAnims);
 
-  k.onKeyRelease(() => {
-    stopAnims();
-  });
-  k.onKeyDown((key) => {
+  k.onKeyDown(() => {
     const keyMap = [
       k.isKeyDown("right"),
       k.isKeyDown("left"),
@@ -164,16 +161,9 @@ k.scene("main", async () => {
       k.isKeyDown("down"),
     ];
 
-    let nbOfKeyPressed = 0;
-    for (const key of keyMap) {
-      if (key) {
-        nbOfKeyPressed++;
-      }
-    }
+    let nbOfKeyPressed = keyMap.filter(Boolean).length;
+    if (nbOfKeyPressed > 1 || player.isInDialogue) return;
 
-    if (nbOfKeyPressed > 1) return;
-
-    if (player.isInDialogue) return;
     if (keyMap[0]) {
       player.flipX = false;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
