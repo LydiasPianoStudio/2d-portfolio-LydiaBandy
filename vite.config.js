@@ -9,12 +9,6 @@ export default defineConfig({
       input: {
         main: "./index.html",
       },
-      output: {
-        manualChunks: undefined,
-        inlineDynamic: true,
-      },
     },
-    minify: false, // Temporarily disable minification to debug
-    sourcemap: true,
   },
 });
