@@ -4097,7 +4097,6 @@ const k = zo({
   touchToMouse: true,
   canvas: document.getElementById("game"),
   debug: false
-  // set to false once ready for production
 });
 function displayDialogue(text, onDisplayEnd) {
   const dialogueUI = document.getElementById("textbox-container");
@@ -4317,4 +4316,4 @@ function setupScene(mapData) {
   });
 }
 startGame();
-//# sourceMappingURL=main-CJ-7Dzhr.js.map
+//# sourceMappingURL=main-nhmO0YvA.js.map
