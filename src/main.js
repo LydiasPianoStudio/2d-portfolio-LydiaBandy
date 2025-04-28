@@ -4,35 +4,60 @@ import { displayDialogue, setCamScale } from "./utils.js";
 
 const baseUrl = import.meta.env.BASE_URL || "/";
 
-k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
-  sliceX: 39,
-  sliceY: 31,
-  anims: {
-    "idle-down": 952,
-    "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
-    "idle-side": 991,
-    "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
-    "idle-up": 1030,
-    "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 },
-  },
-});
+// --- Preload Assets ---
+async function preloadAssets() {
+  // Preload font
+  const font = new FontFace("monogram", `url(${baseUrl}monogram.ttf)`);
+  await font.load();
+  document.fonts.add(font);
 
-k.loadSprite("map", `${baseUrl}map.png`);
-k.loadFont("monogram", `${baseUrl}monogram.ttf`);
-k.setBackground(k.Color.fromHex("#0013de"));
+  // Preload sprites
+  k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
+    sliceX: 39,
+    sliceY: 31,
+    anims: {
+      "idle-down": 952,
+      "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
+      "idle-side": 991,
+      "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
+      "idle-up": 1030,
+      "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 },
+    },
+  });
 
-k.scene("main", async () => {
-  const baseUrl = import.meta.env.BASE_URL || "/";
-  const mapData = await (await fetch(`${baseUrl}map.json`)).json();
+  k.loadSprite("map", `${baseUrl}map.png`);
+  k.loadFont("monogram", `${baseUrl}monogram.ttf`);
+  k.setBackground(k.Color.fromHex("#0013de"));
+
+  // Preload JSON map
+  const mapResponse = await fetch(`${baseUrl}map.json`);
+  const mapData = await mapResponse.json();
+
+  return { mapData };
+}
+
+// --- Start the Game ---
+async function startGame() {
+  try {
+    const { mapData } = await preloadAssets();
+    console.log("Assets loaded!");
+
+    k.scene("main", () => setupScene(mapData));
+    k.go("main");
+  } catch (err) {
+    console.error("Failed to preload assets:", err);
+  }
+}
+
+// --- Scene Setup ---
+function setupScene(mapData) {
   const layers = mapData.layers;
 
   const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
 
   const player = k.make([
     k.sprite("spritesheet", { anim: "idle-down" }),
-    k.area({
-      shape: new k.Rect(k.vec2(0, 3), 10, 10),
-    }),
+    k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),
     k.body(),
     k.anchor("center"),
     k.pos(),
@@ -45,6 +70,7 @@ k.scene("main", async () => {
     "player",
   ]);
 
+  // Setup layers
   for (const layer of layers) {
     if (layer.name === "boundaries") {
       for (const boundary of layer.objects) {
@@ -67,7 +93,6 @@ k.scene("main", async () => {
           });
         }
       }
-
       continue;
     }
 
@@ -87,14 +112,13 @@ k.scene("main", async () => {
 
   setCamScale(k);
 
-  k.onResize(() => {
-    setCamScale(k);
-  });
+  k.onResize(() => setCamScale(k));
 
   k.onUpdate(() => {
     k.camPos(player.worldPos().x, player.worldPos().y - 100);
   });
 
+  // Mouse movement
   k.onMouseDown((mouseBtn) => {
     if (mouseBtn !== "left" || player.isInDialogue) return;
 
@@ -102,26 +126,17 @@ k.scene("main", async () => {
     player.moveTo(worldMousePos, player.speed);
 
     const mouseAngle = player.pos.angle(worldMousePos);
-
     const lowerBound = 50;
     const upperBound = 125;
 
-    if (
-      mouseAngle > lowerBound &&
-      mouseAngle < upperBound &&
-      player.curAnim() !== "walk-up"
-    ) {
-      player.play("walk-up");
+    if (mouseAngle > lowerBound && mouseAngle < upperBound) {
+      if (player.curAnim() !== "walk-up") player.play("walk-up");
       player.direction = "up";
       return;
     }
 
-    if (
-      mouseAngle < -lowerBound &&
-      mouseAngle > -upperBound &&
-      player.curAnim() !== "walk-down"
-    ) {
-      player.play("walk-down");
+    if (mouseAngle < -lowerBound && mouseAngle > -upperBound) {
+      if (player.curAnim() !== "walk-down") player.play("walk-down");
       player.direction = "down";
       return;
     }
@@ -137,29 +152,20 @@ k.scene("main", async () => {
       player.flipX = true;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
       player.direction = "left";
-      return;
     }
   });
 
   function stopAnims() {
-    if (player.direction === "down") {
-      player.play("idle-down");
-      return;
-    }
-    if (player.direction === "up") {
-      player.play("idle-up");
-      return;
-    }
-
-    player.play("idle-side");
+    if (player.direction === "down") player.play("idle-down");
+    else if (player.direction === "up") player.play("idle-up");
+    else player.play("idle-side");
   }
 
   k.onMouseRelease(stopAnims);
+  k.onKeyRelease(stopAnims);
 
-  k.onKeyRelease(() => {
-    stopAnims();
-  });
-  k.onKeyDown((key) => {
+  // Keyboard movement
+  k.onKeyDown(() => {
     const keyMap = [
       k.isKeyDown("right"),
       k.isKeyDown("left"),
@@ -167,16 +173,10 @@ k.scene("main", async () => {
       k.isKeyDown("down"),
     ];
 
-    let nbOfKeyPressed = 0;
-    for (const key of keyMap) {
-      if (key) {
-        nbOfKeyPressed++;
-      }
-    }
-
+    let nbOfKeyPressed = keyMap.filter(Boolean).length;
     if (nbOfKeyPressed > 1) return;
-
     if (player.isInDialogue) return;
+
     if (keyMap[0]) {
       player.flipX = false;
       if (player.curAnim() !== "walk-side") player.play("walk-side");
@@ -206,6 +206,7 @@ k.scene("main", async () => {
       player.move(0, player.speed);
     }
   });
-});
+}
 
-k.go("main");
+// Start the game
+startGame();
