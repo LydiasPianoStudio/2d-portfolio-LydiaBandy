@@ -9,6 +9,11 @@ export default defineConfig({
       input: {
         main: "./index.html",
       },
+      output: {
+        manualChunks: undefined,
+      },
     },
+    sourcemap: true,
   },
+  publicDir: "public",
 });
