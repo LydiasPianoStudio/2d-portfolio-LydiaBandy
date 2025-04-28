@@ -1,9 +1,9 @@
-import kaboom from "kaboom";
-import { scaleFactor } from "./constants";
+import kaboom from "/node_modules/kaboom/dist/kaboom.mjs"; // Use absolute path
+import { scaleFactor } from "./constants.js"; // Add .js extension
 
 export const k = kaboom({
   global: false,
   touchToMouse: true,
   canvas: document.getElementById("game"),
-  debug: false, // set to false once ready for production
+  debug: false,
 });

@@ -13,6 +13,11 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
+    resolve: {
+      alias: {
+        kaboom: "/node_modules/kaboom/dist/kaboom.mjs",
+      },
+    },
     sourcemap: true, // Enable source maps for debugging
     minify: false, // Temporarily disable minification
   },
