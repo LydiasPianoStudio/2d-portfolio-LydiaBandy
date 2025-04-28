@@ -4138,31 +4138,45 @@ function setCamScale(k2) {
   }
 }
 const baseUrl = "/2d-portfolio-LydiaBandy/";
-k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
-  sliceX: 39,
-  sliceY: 31,
-  anims: {
-    "idle-down": 952,
-    "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
-    "idle-side": 991,
-    "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
-    "idle-up": 1030,
-    "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 }
+async function preloadAssets() {
+  const font = new FontFace("monogram", `url(${baseUrl}monogram.ttf)`);
+  await font.load();
+  document.fonts.add(font);
+  k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
+    sliceX: 39,
+    sliceY: 31,
+    anims: {
+      "idle-down": 952,
+      "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
+      "idle-side": 991,
+      "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
+      "idle-up": 1030,
+      "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 }
+    }
+  });
+  k.loadSprite("map", `${baseUrl}map.png`);
+  k.loadFont("monogram", `${baseUrl}monogram.ttf`);
+  k.setBackground(k.Color.fromHex("#0013de"));
+  const mapResponse = await fetch(`${baseUrl}map.json`);
+  const mapData = await mapResponse.json();
+  return { mapData };
+}
+async function startGame() {
+  try {
+    const { mapData } = await preloadAssets();
+    console.log("Assets loaded!");
+    k.scene("main", () => setupScene(mapData));
+    k.go("main");
+  } catch (err) {
+    console.error("Failed to preload assets:", err);
   }
-});
-k.loadSprite("map", `${baseUrl}map.png`);
-k.loadFont("monogram", `${baseUrl}monogram.ttf`);
-k.setBackground(k.Color.fromHex("#0013de"));
-k.scene("main", async () => {
-  const baseUrl2 = "/2d-portfolio-LydiaBandy/";
-  const mapData = await (await fetch(`${baseUrl2}map.json`)).json();
+}
+function setupScene(mapData) {
   const layers = mapData.layers;
   const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
   const player = k.make([
     k.sprite("spritesheet", { anim: "idle-down" }),
-    k.area({
-      shape: new k.Rect(k.vec2(0, 3), 10, 10)
-    }),
+    k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),
     k.body(),
     k.anchor("center"),
     k.pos(),
@@ -4211,9 +4225,7 @@ k.scene("main", async () => {
     }
   }
   setCamScale(k);
-  k.onResize(() => {
-    setCamScale(k);
-  });
+  k.onResize(() => setCamScale(k));
   k.onUpdate(() => {
     k.camPos(player.worldPos().x, player.worldPos().y - 100);
   });
@@ -4225,13 +4237,15 @@ k.scene("main", async () => {
     const mouseAngle = player.pos.angle(worldMousePos);
     const lowerBound = 50;
     const upperBound = 125;
-    if (mouseAngle > lowerBound && mouseAngle < upperBound && player.curAnim() !== "walk-up") {
-      player.play("walk-up");
+    if (mouseAngle > lowerBound && mouseAngle < upperBound) {
+      if (player.curAnim() !== "walk-up")
+        player.play("walk-up");
       player.direction = "up";
       return;
     }
-    if (mouseAngle < -lowerBound && mouseAngle > -upperBound && player.curAnim() !== "walk-down") {
-      player.play("walk-down");
+    if (mouseAngle < -lowerBound && mouseAngle > -upperBound) {
+      if (player.curAnim() !== "walk-down")
+        player.play("walk-down");
       player.direction = "down";
       return;
     }
@@ -4247,37 +4261,26 @@ k.scene("main", async () => {
       if (player.curAnim() !== "walk-side")
         player.play("walk-side");
       player.direction = "left";
-      return;
     }
   });
   function stopAnims() {
-    if (player.direction === "down") {
+    if (player.direction === "down")
       player.play("idle-down");
-      return;
-    }
-    if (player.direction === "up") {
+    else if (player.direction === "up")
       player.play("idle-up");
-      return;
-    }
-    player.play("idle-side");
+    else
+      player.play("idle-side");
   }
   k.onMouseRelease(stopAnims);
-  k.onKeyRelease(() => {
-    stopAnims();
-  });
-  k.onKeyDown((key) => {
+  k.onKeyRelease(stopAnims);
+  k.onKeyDown(() => {
     const keyMap = [
       k.isKeyDown("right"),
       k.isKeyDown("left"),
       k.isKeyDown("up"),
       k.isKeyDown("down")
     ];
-    let nbOfKeyPressed = 0;
-    for (const key2 of keyMap) {
-      if (key2) {
-        nbOfKeyPressed++;
-      }
-    }
+    let nbOfKeyPressed = keyMap.filter(Boolean).length;
     if (nbOfKeyPressed > 1)
       return;
     if (player.isInDialogue)
@@ -4312,6 +4315,6 @@ k.scene("main", async () => {
       player.move(0, player.speed);
     }
   });
-});
-k.go("main");
-//# sourceMappingURL=main-DsmXG1j-.js.map
+}
+startGame();
+//# sourceMappingURL=main-CJ-7Dzhr.js.map
