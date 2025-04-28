@@ -22,7 +22,7 @@ Hosted via **GitHub Pages** using **Vite**.
 ## 📬 Contact & Connect
 
 - 🌐 Website: [lydiaspianostudio.com/contact](https://lydiaspianostudio.com/contact/)
-- 💼 LinkedIn: [Lydia Bandy on LinkedIn](https://www.linkedin.com/in/lydia-bandy/)
+- 💼 LinkedIn: [Lydia Bandy on LinkedIn](https://www.linkedin.com/in/lydia-bandy-2b160745/)
 - 📧 Email: [Contact Form](https://lydiaspianostudio.com/contact/)
 
 ---
