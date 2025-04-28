@@ -9,7 +9,12 @@ export default defineConfig({
       input: {
         main: "./index.html",
       },
+      output: {
+        manualChunks: undefined,
+      },
     },
+    sourcemap: true, // Enable source maps for debugging
+    minify: false, // Temporarily disable minification
   },
   publicDir: "public",
 });
