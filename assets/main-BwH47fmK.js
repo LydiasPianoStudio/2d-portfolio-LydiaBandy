@@ -1,4 +1,4 @@
-import kaboom from "https://cdn.jsdelivr.net/npm/kaboom@3000.0.0-beta.2/dist/kaboom.mjs";
+import kaboom from "https://unpkg.com/kaboom@3000.1.17/dist/kaboom.js";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -218,9 +218,10 @@ const dialogueData = {
 };
 const k = kaboom({
   global: false,
-  touchToMouse: true,
-  canvas: document.getElementById("game"),
-  debug: false
+  canvas: document.querySelector("#game"),
+  scale: 1,
+  debug: true,
+  clearColor: [0, 0, 0, 1]
 });
 function displayDialogue(text, onDisplayEnd) {
   const dialogueUI = document.getElementById("textbox-container");
@@ -297,7 +298,7 @@ async function startGame() {
 function setupScene(mapData) {
   const layers = mapData.layers;
   const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
-  const player = k.make([
+  const player = k.add([
     k.sprite("spritesheet", { anim: "idle-down" }),
     k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),
     k.body(),
@@ -341,7 +342,6 @@ function setupScene(mapData) {
             (map.pos.x + entity.x) * scaleFactor,
             (map.pos.y + entity.y) * scaleFactor
           );
-          k.add(player);
           continue;
         }
       }
@@ -440,4 +440,4 @@ function setupScene(mapData) {
   });
 }
 startGame();
-//# sourceMappingURL=main-WXxCC2zb.js.map
+//# sourceMappingURL=main-BwH47fmK.js.map
