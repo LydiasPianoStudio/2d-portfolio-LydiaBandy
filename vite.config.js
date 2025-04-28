@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { resolve } from "path";
 
 export default defineConfig({
   base: "/2d-portfolio-LydiaBandy/",
@@ -15,7 +16,7 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        kaboom: "/node_modules/kaboom/dist/kaboom.mjs",
+        kaboom: resolve("./node_modules/kaboom/dist/kaboom.mjs"), // Use absolute path to kaboom module
       },
     },
     sourcemap: true, // Enable source maps for debugging
