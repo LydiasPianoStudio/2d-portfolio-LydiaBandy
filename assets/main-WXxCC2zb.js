@@ -1,4 +1,4 @@
-import kaboom from "https://unpkg.com/kaboom@3000.0.0-beta.2/dist/kaboom.mjs";
+import kaboom from "https://cdn.jsdelivr.net/npm/kaboom@3000.0.0-beta.2/dist/kaboom.mjs";
 (function polyfill() {
   const relList = document.createElement("link").relList;
   if (relList && relList.supports && relList.supports("modulepreload")) {
@@ -440,4 +440,4 @@ function setupScene(mapData) {
   });
 }
 startGame();
-//# sourceMappingURL=main-8w6XETuP.js.map
+//# sourceMappingURL=main-WXxCC2zb.js.map
