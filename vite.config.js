@@ -14,11 +14,11 @@ export default defineConfig({
         manualChunks: undefined,
       },
     },
-    resolve: {
-      alias: {
-        kaboom: resolve("./node_modules/kaboom/dist/kaboom.mjs"), // Use absolute path to kaboom module
-      },
-    },
+    // resolve: {
+    //   alias: {
+    //     kaboom: resolve("./node_modules/kaboom/dist/kaboom.mjs"), // Use absolute path to kaboom module
+    //   },
+    // },
     sourcemap: true, // Enable source maps for debugging
     minify: false, // Temporarily disable minification
   },
