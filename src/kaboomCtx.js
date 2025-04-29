@@ -1,4 +1,5 @@
-import kaboom from "kaboom"; // Use the aliased import // Use absolute path
+// @ts-ignore
+import kaboom from "../node_modules/kaboom/dist/kaboom.mjs"; // Use the aliased import // Use absolute path
 import { scaleFactor } from "./constants.js"; // Add .js extension
 
 export const k = kaboom({
