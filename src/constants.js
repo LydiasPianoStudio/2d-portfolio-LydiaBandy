@@ -1,11 +1,3 @@
-import SupportLocal from "./SupportLocal.png";
-import McDanielCollege from "./McDanielCollege.jpg";
-import HangmanOfficeEdition from "./Hangman_Office_Edition.png";
-import AlsWoodcraft from "./AlsWoodcraft.png";
-import JohnnyChatExample from "./JohnnyChatExample.png";
-import MusicHistoryQuiz2 from "./MusicHistoryQuiz2.png";
-import PracticeLogPage from "./PracticeLogPage.png";
-import LydiaBandy from "./LydiaBandy.jpg";
 export const scaleFactor = 4;
 
 export const dialogueData = {
@@ -45,7 +37,7 @@ export const dialogueData = {
     <p>
       I attended <strong>McDaniel College</strong>, receiving a B.A. in Music.
     </p>
-    <img src="${McDanielCollege}" width="200" height="160" alt="McDaniel College Degree" style="margin: 10px 0; border-radius: 8px;" />
+    <img src="./McDanielCollege.jpg" width="200" height="160" alt="McDaniel College Degree" style="margin: 10px 0; border-radius: 8px;" />
     
     <p>
       For over 25 years, I've been a <strong>professional harpist, pianist, and award-winning music educator</strong>.
@@ -162,7 +154,7 @@ export const dialogueData = {
     <p>
     Our current project is <a href="https://supportlocalusa.com/" target="_blank"><strong>SupportLocalUSA.com</strong></a> — a platform that empowers local communities by promoting their businesses online. 💼🌟
   </p>
-  <img src="${SupportLocal}" alt="Support Local USA Project" width="300" height="240" style="border-radius: 8px; margin: 20px auto; display: block;" />
+  <img src="./SupportLocal.png" alt="Support Local USA Project" width="300" height="240" style="border-radius: 8px; margin: 20px auto; display: block;" />
   <p>
     By leveraging Agile (Scrum) methodologies to drive efficiency and participating in stand-ups, sprint planning, and backlog prioritization, I helped reduce development cycle times by 15% and increase user engagement by 20%.. 🚀
   </p>
