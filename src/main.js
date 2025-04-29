@@ -2,8 +2,8 @@ import { dialogueData, scaleFactor } from "./constants.js";
 import { k } from "./kaboomCtx.js";
 import { displayDialogue, setCamScale } from "./utils.js";
 
-// Use a hardcoded fallback for BASE_URL
-const baseUrl = import.meta?.env?.BASE_URL || "/2d-portfolio-LydiaBandy/";
+// const baseUrl = "/2d-portfolio-LydiaBandy/";
+const baseUrl = import.meta.env.BASE_URL;
 
 // --- Preload Assets ---
 async function preloadAssets() {
