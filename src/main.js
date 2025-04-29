@@ -6,15 +6,14 @@ const baseUrl = import.meta?.env?.BASE_URL || "/2d-portfolio-LydiaBandy/";
 
 async function preloadAssets() {
   try {
-    // Set root path for all assets
-    k.loadRoot(""); // Clear the root path
+    k.loadRoot(baseUrl); // Set root path for all assets
     console.log("Loading assets from:", baseUrl);
 
     // Preload sprites with error handling
     try {
       console.log("Loading spritesheet...");
-      // Use full path for sprite loading
-      await k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
+      // Use relative path since loadRoot is set
+      await k.loadSprite("spritesheet", "spritesheet.png", {
         sliceX: 39,
         sliceY: 31,
         anims: {
@@ -29,13 +28,14 @@ async function preloadAssets() {
       console.log("✓ Spritesheet loaded");
 
       console.log("Loading map sprite...");
-      await k.loadSprite("map", `${baseUrl}map.png`);
+      await k.loadSprite("map", "map.png");
       console.log("✓ Map sprite loaded");
     } catch (spriteError) {
       console.error("Sprite loading failed:", spriteError);
-      console.log("Attempted URLs:", {
-        spritesheet: `${baseUrl}spritesheet.png`,
-        map: `${baseUrl}map.png`,
+      console.log("Asset paths:", {
+        root: baseUrl,
+        spritesheet: "spritesheet.png",
+        map: "map.png",
       });
       throw spriteError;
     }
