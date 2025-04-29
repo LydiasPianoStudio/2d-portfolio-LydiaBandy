@@ -6,11 +6,6 @@ export default defineConfig({
     outDir: "dist",
     assetsDir: "", // prevents assets from being nested
     assetsInclude: ["**/*.ttf", "**/*.png", "**/*.json"],
-    rollupOptions: {
-      input: {
-        main: "./index.html",
-      },
-    },
   },
   publicDir: "public",
 });
