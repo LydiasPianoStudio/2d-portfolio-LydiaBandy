@@ -1,48 +1,4 @@
-import kaboom from "https://unpkg.com/kaboom@3000.1.17/dist/kaboom.mjs";
-(function polyfill() {
-  const relList = document.createElement("link").relList;
-  if (relList && relList.supports && relList.supports("modulepreload")) {
-    return;
-  }
-  for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
-    processPreload(link);
-  }
-  new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type !== "childList") {
-        continue;
-      }
-      for (const node of mutation.addedNodes) {
-        if (node.tagName === "LINK" && node.rel === "modulepreload")
-          processPreload(node);
-      }
-    }
-  }).observe(document, { childList: true, subtree: true });
-  function getFetchOpts(link) {
-    const fetchOpts = {};
-    if (link.integrity)
-      fetchOpts.integrity = link.integrity;
-    if (link.referrerPolicy)
-      fetchOpts.referrerPolicy = link.referrerPolicy;
-    if (link.crossOrigin === "use-credentials")
-      fetchOpts.credentials = "include";
-    else if (link.crossOrigin === "anonymous")
-      fetchOpts.credentials = "omit";
-    else
-      fetchOpts.credentials = "same-origin";
-    return fetchOpts;
-  }
-  function processPreload(link) {
-    if (link.ep)
-      return;
-    link.ep = true;
-    const fetchOpts = getFetchOpts(link);
-    fetch(link.href, fetchOpts);
-  }
-})();
-const scaleFactor = 4;
-const dialogueData = {
-  pc: `
+import m from"https://unpkg.com/kaboom@3000.1.17/dist/kaboom.mjs";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))e(a);new MutationObserver(a=>{for(const o of a)if(o.type==="childList")for(const i of o.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&e(i)}).observe(document,{childList:!0,subtree:!0});function l(a){const o={};return a.integrity&&(o.integrity=a.integrity),a.referrerPolicy&&(o.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?o.credentials="include":a.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function e(a){if(a.ep)return;a.ep=!0;const o=l(a);fetch(a.href,o)}})();const g=4,f={pc:`
    <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>
       👋 Hi, I’m <strong>Lydia Bandy</strong> — software engineer, music composer, and music educator.
@@ -71,8 +27,7 @@ const dialogueData = {
     <p> Here is my resume: <a href="https://github.com/LydiasPianoStudio/Resume/blob/main/Lydia%20Bandy%20Resume%20Github.pdf" target="_blank">Lydia Bandy Software Engineer</a>
   </p>
   </div>
-`,
-  "cs-degree": `
+`,"cs-degree":`
  <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>
       I attended <strong>McDaniel College</strong>, receiving a B.A. in Music.
@@ -95,8 +50,7 @@ const dialogueData = {
       💻 <a href="https://lydiaspianostudio.com/2024/11/05/bridging-music-and-coding/" target="_blank"><em>Music and Coding</em></a>
     </p>
   </div>
-`,
-  "sofa-table": `
+`,"sofa-table":`
   <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>🎹 I love relaxing on the couch and uploading harp and piano videos to my YouTube and TikTok channels.</p>
     <p>
@@ -114,8 +68,7 @@ const dialogueData = {
       encrypted-media; gyroscope; picture-in-picture; web-share" 
       referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
-`,
-  tv: `
+`,tv:`
 <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6; max-width: 100%; overflow-x: hidden;">
   <p>📺 What’s your favorite comedy show?</p>
   <p>I love kicking back and watching <strong>The Office</strong> — it never gets old!</p>
@@ -128,8 +81,7 @@ const dialogueData = {
   </p>
   <img src="./Hangman_Office_Edition.png" style="width: 100%; max-width: 300px; height: auto; margin-top: 10px; border-radius: 8px;" alt="The Office Hangman Game" />
 </div>
-`,
-  bed: `
+`,bed:`
   <div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>🛏️ Not only am I a software engineer, I’m also a music composer! 🎶🎹</p>
     <p>Having trouble sleeping? Drift off with my album <strong>"Piano Pearls"</strong> — peaceful piano music to soothe your soul. 👶🏻💤</p>
@@ -141,8 +93,7 @@ const dialogueData = {
     </iframe>
     <p style="margin-top: 10px;">🎧 Follow me on Spotify for more calming harp and piano music!</p>
   </div>
-`,
-  resume: `<div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+`,resume:`<div style="text-align: center; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
   <p><strong>Freelance Web Developer</strong></p>
   <p>
     I created this simple but effective landing page for 
@@ -158,8 +109,7 @@ const dialogueData = {
     </p>
   </p>
 </div>
-`,
-  projects: `
+`,projects:`
   <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
     <p>💻 My portfolio includes:</p>
 
@@ -181,8 +131,7 @@ const dialogueData = {
       <img src="./PracticeLogPage.png" width="300" height="240" alt="Practice Log Page" style="margin: 20px auto; display: block; border-radius: 8px;" />
     </ul>
   </div>
-`,
-  library: `  <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+`,library:`  <div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
   <p>
     🧑‍💻 I’m a Junior Developer at <strong>TechJoy Software</strong> where I help bring ideas to life.
   </p>
@@ -208,236 +157,9 @@ const dialogueData = {
   <br>Let’s connect and chat on 
   <a href="https://linkedin.com/in/lydia-bandy-2b160745/" target="_blank">LinkedIn</a>.
 </p>
-`,
-  exit: `<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
+`,exit:`<div style="text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">
   Thanks for stopping by and visiting me at my virtual home!  
   <img src="./LydiaBandy.jpg" alt="Lydia Bandy" width="160" height="160" style="border-radius: 50%; margin: 10px 0;" />
   <br>Feel free to check out my website at
    <a href="https://lydiaspianostudio.com/" target="_blank">LydiasPianoStudio</a>,
-    just close the tab and stop by anytime!`
-};
-const k = kaboom({
-  global: false,
-  touchToMouse: true,
-  canvas: document.getElementById("game"),
-  debug: false
-});
-function displayDialogue(text, onDisplayEnd) {
-  const dialogueUI = document.getElementById("textbox-container");
-  const dialogue = document.getElementById("dialogue");
-  dialogueUI.style.display = "block";
-  let index = 0;
-  let currentText = "";
-  const intervalRef = setInterval(() => {
-    if (index < text.length) {
-      currentText += text[index];
-      dialogue.innerHTML = currentText;
-      index++;
-      return;
-    }
-    clearInterval(intervalRef);
-  }, 1);
-  const closeBtn = document.getElementById("close");
-  function onCloseBtnClick() {
-    onDisplayEnd();
-    dialogueUI.style.display = "none";
-    dialogue.innerHTML = "";
-    clearInterval(intervalRef);
-    closeBtn.removeEventListener("click", onCloseBtnClick);
-  }
-  closeBtn.addEventListener("click", onCloseBtnClick);
-  addEventListener("keypress", (key) => {
-    if (key.code === "Enter") {
-      closeBtn.click();
-    }
-  });
-}
-function setCamScale(k2) {
-  const resizeFactor = k2.width() / k2.height();
-  if (resizeFactor < 1) {
-    k2.camScale(k2.vec2(1));
-  } else {
-    k2.camScale(k2.vec2(1.5));
-  }
-}
-const baseUrl = "/2d-portfolio-LydiaBandy/";
-async function preloadAssets() {
-  const font = new FontFace("monogram", `url(${baseUrl}monogram.ttf)`);
-  await font.load();
-  document.fonts.add(font);
-  k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
-    sliceX: 39,
-    sliceY: 31,
-    anims: {
-      "idle-down": 952,
-      "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
-      "idle-side": 991,
-      "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
-      "idle-up": 1030,
-      "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 }
-    }
-  });
-  k.loadSprite("map", `${baseUrl}map.png`);
-  k.loadFont("monogram", `${baseUrl}monogram.ttf`);
-  k.setBackground(k.Color.fromHex("#0013de"));
-  const mapResponse = await fetch(`${baseUrl}map.json`);
-  const mapData = await mapResponse.json();
-  return { mapData };
-}
-async function startGame() {
-  try {
-    const { mapData } = await preloadAssets();
-    console.log("Assets loaded!");
-    k.scene("main", () => setupScene(mapData));
-    k.go("main");
-  } catch (err) {
-    console.error("Failed to preload assets:", err);
-  }
-}
-function setupScene(mapData) {
-  const layers = mapData.layers;
-  const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
-  const player = k.make([
-    k.sprite("spritesheet", { anim: "idle-down" }),
-    k.area({ shape: new k.Rect(k.vec2(0, 3), 10, 10) }),
-    k.body(),
-    k.anchor("center"),
-    k.pos(),
-    k.scale(scaleFactor),
-    {
-      speed: 250,
-      direction: "down",
-      isInDialogue: false
-    },
-    "player"
-  ]);
-  for (const layer of layers) {
-    if (layer.name === "boundaries") {
-      for (const boundary of layer.objects) {
-        map.add([
-          k.area({
-            shape: new k.Rect(k.vec2(0), boundary.width, boundary.height)
-          }),
-          k.body({ isStatic: true }),
-          k.pos(boundary.x, boundary.y),
-          boundary.name
-        ]);
-        if (boundary.name) {
-          player.onCollide(boundary.name, () => {
-            player.isInDialogue = true;
-            displayDialogue(
-              dialogueData[boundary.name],
-              () => player.isInDialogue = false
-            );
-          });
-        }
-      }
-      continue;
-    }
-    if (layer.name === "spawnpoints") {
-      for (const entity of layer.objects) {
-        if (entity.name === "player") {
-          player.pos = k.vec2(
-            (map.pos.x + entity.x) * scaleFactor,
-            (map.pos.y + entity.y) * scaleFactor
-          );
-          k.add(player);
-          continue;
-        }
-      }
-    }
-  }
-  setCamScale(k);
-  k.onResize(() => setCamScale(k));
-  k.onUpdate(() => {
-    k.camPos(player.worldPos().x, player.worldPos().y - 100);
-  });
-  k.onMouseDown((mouseBtn) => {
-    if (mouseBtn !== "left" || player.isInDialogue)
-      return;
-    const worldMousePos = k.toWorld(k.mousePos());
-    player.moveTo(worldMousePos, player.speed);
-    const mouseAngle = player.pos.angle(worldMousePos);
-    const lowerBound = 50;
-    const upperBound = 125;
-    if (mouseAngle > lowerBound && mouseAngle < upperBound) {
-      if (player.curAnim() !== "walk-up")
-        player.play("walk-up");
-      player.direction = "up";
-      return;
-    }
-    if (mouseAngle < -lowerBound && mouseAngle > -upperBound) {
-      if (player.curAnim() !== "walk-down")
-        player.play("walk-down");
-      player.direction = "down";
-      return;
-    }
-    if (Math.abs(mouseAngle) > upperBound) {
-      player.flipX = false;
-      if (player.curAnim() !== "walk-side")
-        player.play("walk-side");
-      player.direction = "right";
-      return;
-    }
-    if (Math.abs(mouseAngle) < lowerBound) {
-      player.flipX = true;
-      if (player.curAnim() !== "walk-side")
-        player.play("walk-side");
-      player.direction = "left";
-    }
-  });
-  function stopAnims() {
-    if (player.direction === "down")
-      player.play("idle-down");
-    else if (player.direction === "up")
-      player.play("idle-up");
-    else
-      player.play("idle-side");
-  }
-  k.onMouseRelease(stopAnims);
-  k.onKeyRelease(stopAnims);
-  k.onKeyDown(() => {
-    const keyMap = [
-      k.isKeyDown("right"),
-      k.isKeyDown("left"),
-      k.isKeyDown("up"),
-      k.isKeyDown("down")
-    ];
-    let nbOfKeyPressed = keyMap.filter(Boolean).length;
-    if (nbOfKeyPressed > 1)
-      return;
-    if (player.isInDialogue)
-      return;
-    if (keyMap[0]) {
-      player.flipX = false;
-      if (player.curAnim() !== "walk-side")
-        player.play("walk-side");
-      player.direction = "right";
-      player.move(player.speed, 0);
-      return;
-    }
-    if (keyMap[1]) {
-      player.flipX = true;
-      if (player.curAnim() !== "walk-side")
-        player.play("walk-side");
-      player.direction = "left";
-      player.move(-player.speed, 0);
-      return;
-    }
-    if (keyMap[2]) {
-      if (player.curAnim() !== "walk-up")
-        player.play("walk-up");
-      player.direction = "up";
-      player.move(0, -player.speed);
-      return;
-    }
-    if (keyMap[3]) {
-      if (player.curAnim() !== "walk-down")
-        player.play("walk-down");
-      player.direction = "down";
-      player.move(0, player.speed);
-    }
-  });
-}
-startGame();
-//# sourceMappingURL=main-C81rMURK.js.map
+    just close the tab and stop by anytime!`},t=m({global:!1,touchToMouse:!0,canvas:document.getElementById("game"),debug:!1});function y(n,s){const l=document.getElementById("textbox-container"),e=document.getElementById("dialogue");l.style.display="block";let a=0,o="";const i=setInterval(()=>{if(a<n.length){o+=n[a],e.innerHTML=o,a++;return}clearInterval(i)},1),r=document.getElementById("close");function d(){s(),l.style.display="none",e.innerHTML="",clearInterval(i),r.removeEventListener("click",d)}r.addEventListener("click",d),addEventListener("keypress",c=>{c.code==="Enter"&&r.click()})}function u(n){n.width()/n.height()<1?n.camScale(n.vec2(1)):n.camScale(n.vec2(1.5))}const p="/2d-portfolio-LydiaBandy/";async function h(){const n=new FontFace("monogram",`url(${p}monogram.ttf)`);return await n.load(),document.fonts.add(n),t.loadSprite("spritesheet",`${p}spritesheet.png`,{sliceX:39,sliceY:31,anims:{"idle-down":952,"walk-down":{from:952,to:955,loop:!0,speed:8},"idle-side":991,"walk-side":{from:991,to:994,loop:!0,speed:8},"idle-up":1030,"walk-up":{from:1030,to:1033,loop:!0,speed:8}}}),t.loadSprite("map",`${p}map.png`),t.loadFont("monogram",`${p}monogram.ttf`),t.setBackground(t.Color.fromHex("#0013de")),{mapData:await(await fetch(`${p}map.json`)).json()}}async function b(){try{const{mapData:n}=await h();console.log("Assets loaded!"),t.scene("main",()=>w(n)),t.go("main")}catch(n){console.error("Failed to preload assets:",n)}}function w(n){const s=n.layers,l=t.add([t.sprite("map"),t.pos(0),t.scale(g)]),e=t.make([t.sprite("spritesheet",{anim:"idle-down"}),t.area({shape:new t.Rect(t.vec2(0,3),10,10)}),t.body(),t.anchor("center"),t.pos(),t.scale(g),{speed:250,direction:"down",isInDialogue:!1},"player"]);for(const o of s){if(o.name==="boundaries"){for(const i of o.objects)l.add([t.area({shape:new t.Rect(t.vec2(0),i.width,i.height)}),t.body({isStatic:!0}),t.pos(i.x,i.y),i.name]),i.name&&e.onCollide(i.name,()=>{e.isInDialogue=!0,y(f[i.name],()=>e.isInDialogue=!1)});continue}if(o.name==="spawnpoints"){for(const i of o.objects)if(i.name==="player"){e.pos=t.vec2((l.pos.x+i.x)*g,(l.pos.y+i.y)*g),t.add(e);continue}}}u(t),t.onResize(()=>u(t)),t.onUpdate(()=>{t.camPos(e.worldPos().x,e.worldPos().y-100)}),t.onMouseDown(o=>{if(o!=="left"||e.isInDialogue)return;const i=t.toWorld(t.mousePos());e.moveTo(i,e.speed);const r=e.pos.angle(i),d=50,c=125;if(r>d&&r<c){e.curAnim()!=="walk-up"&&e.play("walk-up"),e.direction="up";return}if(r<-d&&r>-c){e.curAnim()!=="walk-down"&&e.play("walk-down"),e.direction="down";return}if(Math.abs(r)>c){e.flipX=!1,e.curAnim()!=="walk-side"&&e.play("walk-side"),e.direction="right";return}Math.abs(r)<d&&(e.flipX=!0,e.curAnim()!=="walk-side"&&e.play("walk-side"),e.direction="left")});function a(){e.direction==="down"?e.play("idle-down"):e.direction==="up"?e.play("idle-up"):e.play("idle-side")}t.onMouseRelease(a),t.onKeyRelease(a),t.onKeyDown(()=>{const o=[t.isKeyDown("right"),t.isKeyDown("left"),t.isKeyDown("up"),t.isKeyDown("down")];if(!(o.filter(Boolean).length>1)&&!e.isInDialogue){if(o[0]){e.flipX=!1,e.curAnim()!=="walk-side"&&e.play("walk-side"),e.direction="right",e.move(e.speed,0);return}if(o[1]){e.flipX=!0,e.curAnim()!=="walk-side"&&e.play("walk-side"),e.direction="left",e.move(-e.speed,0);return}if(o[2]){e.curAnim()!=="walk-up"&&e.play("walk-up"),e.direction="up",e.move(0,-e.speed);return}o[3]&&(e.curAnim()!=="walk-down"&&e.play("walk-down"),e.direction="down",e.move(0,e.speed))}})}b();
