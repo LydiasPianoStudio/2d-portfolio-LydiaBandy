@@ -2,39 +2,52 @@ import { dialogueData, scaleFactor } from "./constants.js";
 import { k } from "./kaboomCtx.js";
 import { displayDialogue, setCamScale } from "./utils.js";
 
-// Use optional chaining and provide a fallback value
-
 const baseUrl = import.meta?.env?.BASE_URL || "/2d-portfolio-LydiaBandy/";
-// --- Preload Assets ---
+
 async function preloadAssets() {
-  // Preload font
-  const font = new FontFace("monogram", `url(${baseUrl}monogram.ttf)`);
-  await font.load();
-  document.fonts.add(font);
+  try {
+    // Set root path for all assets
+    k.loadRoot(baseUrl);
+    console.log("Loading assets from:", baseUrl);
 
-  // Preload sprites
-  k.loadSprite("spritesheet", `${baseUrl}spritesheet.png`, {
-    sliceX: 39,
-    sliceY: 31,
-    anims: {
-      "idle-down": 952,
-      "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
-      "idle-side": 991,
-      "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
-      "idle-up": 1030,
-      "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 },
-    },
-  });
+    // Preload font with error handling
+    try {
+      const font = new FontFace("monogram", `url(monogram.ttf)`);
+      await font.load();
+      document.fonts.add(font);
+      console.log("Font loaded successfully");
+    } catch (fontError) {
+      console.error("Font loading error:", fontError);
+      throw fontError;
+    }
 
-  k.loadSprite("map", `${baseUrl}map.png`);
-  k.loadFont("monogram", `${baseUrl}monogram.ttf`);
-  k.setBackground(k.Color.fromHex("#0013de"));
+    // Preload sprites - remove baseUrl since loadRoot handles it
+    k.loadSprite("spritesheet", "spritesheet.png", {
+      sliceX: 39,
+      sliceY: 31,
+      anims: {
+        "idle-down": 952,
+        "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
+        "idle-side": 991,
+        "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
+        "idle-up": 1030,
+        "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 },
+      },
+    });
 
-  // Preload JSON map
-  const mapResponse = await fetch(`${baseUrl}map.json`);
-  const mapData = await mapResponse.json();
+    k.loadSprite("map", "map.png");
+    k.loadFont("monogram", "monogram.ttf");
+    k.setBackground(k.Color.fromHex("#0013de"));
 
-  return { mapData };
+    // Preload JSON map
+    const mapResponse = await fetch(`${baseUrl}map.json`);
+    const mapData = await mapResponse.json();
+
+    return { mapData };
+  } catch (error) {
+    console.error("Failed to preload assets:", error);
+    throw error;
+  }
 }
 
 // --- Start the Game ---
