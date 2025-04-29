@@ -10,30 +10,54 @@ async function preloadAssets() {
     k.loadRoot(baseUrl);
     console.log("Loading assets from:", baseUrl);
 
-    // Preload sprites only
-    k.loadSprite("spritesheet", "spritesheet.png", {
-      sliceX: 39,
-      sliceY: 31,
-      anims: {
-        "idle-down": 952,
-        "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
-        "idle-side": 991,
-        "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
-        "idle-up": 1030,
-        "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 },
-      },
-    });
+    // Preload sprites with error handling
+    try {
+      console.log("Loading spritesheet...");
+      await k.loadSprite("spritesheet", "spritesheet.png", {
+        sliceX: 39,
+        sliceY: 31,
+        anims: {
+          "idle-down": 952,
+          "walk-down": { from: 952, to: 955, loop: true, speed: 8 },
+          "idle-side": 991,
+          "walk-side": { from: 991, to: 994, loop: true, speed: 8 },
+          "idle-up": 1030,
+          "walk-up": { from: 1030, to: 1033, loop: true, speed: 8 },
+        },
+      });
+      console.log("✓ Spritesheet loaded");
 
-    k.loadSprite("map", "map.png");
+      console.log("Loading map sprite...");
+      await k.loadSprite("map", "map.png");
+      console.log("✓ Map sprite loaded");
+    } catch (spriteError) {
+      console.error("Sprite loading failed:", spriteError);
+      console.log("Attempted URLs:", {
+        spritesheet: `${baseUrl}spritesheet.png`,
+        map: `${baseUrl}map.png`,
+      });
+      throw spriteError;
+    }
+
     k.setBackground(k.Color.fromHex("#0013de"));
 
-    // Preload JSON map
-    const mapResponse = await fetch(`${baseUrl}map.json`);
-    const mapData = await mapResponse.json();
-
-    return { mapData };
+    // Load map data with error handling
+    try {
+      console.log("Loading map data...");
+      const mapResponse = await fetch(`${baseUrl}map.json`);
+      if (!mapResponse.ok) {
+        throw new Error(`HTTP error! status: ${mapResponse.status}`);
+      }
+      const mapData = await mapResponse.json();
+      console.log("✓ Map data loaded");
+      return { mapData };
+    } catch (mapError) {
+      console.error("Map data loading failed:", mapError);
+      console.log("Attempted map URL:", `${baseUrl}map.json`);
+      throw mapError;
+    }
   } catch (error) {
-    console.error("Failed to preload assets:", error);
+    console.error("Asset loading failed:", error);
     throw error;
   }
 }
