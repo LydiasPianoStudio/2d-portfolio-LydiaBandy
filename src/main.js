@@ -2,7 +2,7 @@ import { dialogueData, scaleFactor } from "./constants.js";
 import { k } from "./kaboomCtx.js";
 import { displayDialogue, setCamScale } from "./utils.js";
 
-const baseUrl = import.meta.env.BASE_URL || "/2d-portfolio-LydiaBandy/";
+const baseUrl = "/2d-portfolio-LydiaBandy/";
 
 // --- Preload Assets ---
 async function preloadAssets() {
