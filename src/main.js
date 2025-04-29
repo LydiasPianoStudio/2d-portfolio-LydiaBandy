@@ -10,18 +10,7 @@ async function preloadAssets() {
     k.loadRoot(baseUrl);
     console.log("Loading assets from:", baseUrl);
 
-    // Preload font with error handling
-    try {
-      const font = new FontFace("monogram", `url(monogram.ttf)`);
-      await font.load();
-      document.fonts.add(font);
-      console.log("Font loaded successfully");
-    } catch (fontError) {
-      console.error("Font loading error:", fontError);
-      throw fontError;
-    }
-
-    // Preload sprites - remove baseUrl since loadRoot handles it
+    // Preload sprites only
     k.loadSprite("spritesheet", "spritesheet.png", {
       sliceX: 39,
       sliceY: 31,
@@ -36,7 +25,6 @@ async function preloadAssets() {
     });
 
     k.loadSprite("map", "map.png");
-    k.loadFont("monogram", "monogram.ttf");
     k.setBackground(k.Color.fromHex("#0013de"));
 
     // Preload JSON map
