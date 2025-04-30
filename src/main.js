@@ -2,17 +2,17 @@ import { dialogueData, scaleFactor } from "./constants.js";
 import { k } from "./kaboomCtx.js";
 import { displayDialogue, setCamScale } from "./utils.js";
 
-const baseUrl = import.meta?.env?.BASE_URL || "/2d-portfolio-LydiaBandy/";
+// Use Vite's BASE_URL directly
+const baseUrl = import.meta.env.BASE_URL;
 
 async function preloadAssets() {
   try {
-    k.loadRoot(baseUrl); // Set root path for all assets
-    console.log("Loading assets from:", baseUrl);
+    console.log("Starting asset load with base URL:", baseUrl);
+    k.loadRoot(baseUrl); // Set root path using Vite's BASE_URL
 
     // Preload sprites with error handling
     try {
-      console.log("Loading spritesheet...");
-      // Use relative path since loadRoot is set
+      console.log("Loading spritesheet from:", `${baseUrl}spritesheet.png`);
       await k.loadSprite("spritesheet", "spritesheet.png", {
         sliceX: 39,
         sliceY: 31,
@@ -32,10 +32,9 @@ async function preloadAssets() {
       console.log("✓ Map sprite loaded");
     } catch (spriteError) {
       console.error("Sprite loading failed:", spriteError);
-      console.log("Asset paths:", {
-        root: baseUrl,
-        spritesheet: "spritesheet.png",
-        map: "map.png",
+      console.log("Full asset paths:", {
+        spritesheet: `${baseUrl}spritesheet.png`,
+        map: `${baseUrl}map.png`,
       });
       throw spriteError;
     }
