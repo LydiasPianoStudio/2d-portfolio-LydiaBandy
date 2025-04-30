@@ -2,8 +2,8 @@ import { dialogueData, scaleFactor } from "./constants.js";
 import { k } from "./kaboomCtx.js";
 import { displayDialogue, setCamScale } from "./utils.js";
 
-// Add baseUrl constant
-const baseUrl = "/2d-portfolio-LydiaBandy/";
+// Use hardcoded path for GitHub Pages with fallback for development
+const baseUrl = import.meta?.env?.BASE_URL || "/2d-portfolio-LydiaBandy/";
 
 async function preloadAssets() {
   try {
