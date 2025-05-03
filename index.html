@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+
     <title>Vite App</title>
     <script type="module" crossorigin src="/2d-portfolio-LydiaBandy/main-GDNZoTqE.js"></script>
   </head>
@@ -73,6 +77,21 @@
         font-size: 2.3rem;
         flex-direction: column;
         color: rgb(238, 238, 238);
+      }
+      /* phone test */
+      @media (max-width: 768px) {
+        body {
+          font-size: 1.2rem;
+        }
+
+        .note {
+          font-size: 1.5rem;
+        }
+
+        #textbox {
+          font-size: 1.2rem;
+          padding: 1rem;
+        }
       }
     </style>
     <div id="app">
