@@ -2,8 +2,11 @@ import kaboom from "https://unpkg.com/kaboom@3000.1.17/dist/kaboom.mjs"; // Use 
 import { scaleFactor } from "./constants.js"; // Add .js extension
 
 export const k = kaboom({
-  global: false,
+  canvas: document.getElementById("gameCanvas"),
+  width: window.innerWidth,
+  height: window.innerHeight,
+  scale: 1,
   touchToMouse: true,
-  canvas: document.getElementById("game"),
   debug: false,
+  background: [0, 19, 222], // This restores your blue background
 });
